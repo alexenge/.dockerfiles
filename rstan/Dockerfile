@@ -1,7 +1,9 @@
 FROM rocker/binder:4.0.3
 
 # Set environment variables
-ENV RSTUDIO_VERSION=1.2.5042 \
+ENV NB_USER=rstudio \
+    NB_UID=1000 \
+    RSTUDIO_VERSION=1.2.5042 \
     RETICULATE_MINICONDA_ENABLED=FALSE
 
 # Install as root
@@ -94,3 +96,5 @@ RUN \
 
 # Switch back to default user
 USER ${NB_USER}
+ARG ${NB_USER}
+ARG ${NB_UID}
