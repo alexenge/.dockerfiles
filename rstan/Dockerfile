@@ -1,20 +1,20 @@
-FROM rocker/binder:4.0.2
+FROM rocker/binder:4.0.3
 
 # Set environment variables
 ENV HOME=/home/${NB_USER} \
     RSTUDIO_VERSION=1.2.5042 \
     RETICULATE_MINICONDA_ENABLED=FALSE
 
-# Switch to root user for install
+# Install as root
 USER root
-
-# Install RStudio...
-RUN /rocker_scripts/install_rstudio.sh && \
-    # ... system packages ...
+RUN \
+    # RStudio
+    /rocker_scripts/install_rstudio.sh && \
+    # System packages
     apt-get install -y --no-install-recommends \
         clang \
         && \
-    # ... R packages from MRAN ...
+    # R packages from MRAN
     install2.r -s --error \
         brms \
         cowplot \
@@ -22,11 +22,11 @@ RUN /rocker_scripts/install_rstudio.sh && \
         rstan \
         styler \
         && \
+    # R packages from GitHub
     installGithub.r \
-    # ... R packages from GitHub ...
         crsh/papaja@0b4a9a79 \
         && \
-    # ... and LaTeX packages
+    # LaTeX packages
     tlmgr update --self && \
     tlmgr install \
         amsmath \
@@ -84,7 +84,6 @@ RUN /rocker_scripts/install_rstudio.sh && \
         xunicode \
         zapfding \
         && \
-
     # Set some startup options
     mkdir .R && \
     echo "CXX14=clang++" >> .R/Makevars && \
