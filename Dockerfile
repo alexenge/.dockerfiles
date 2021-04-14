@@ -1,10 +1,13 @@
 FROM rocker/binder:4.0.3
 
 # Set environment variables
-ENV NB_USER=rstudio \
-    NB_UID=1000 \
-    RSTUDIO_VERSION=1.2.5042 \
-    RETICULATE_MINICONDA_ENABLED=FALSE
+ARG NB_USER=rstudio
+ARG NB_UID=1000
+ENV USER=${NB_USER}
+ENV NB_UID=${NB_UID}
+ENV HOME=/home/${NB_USER}
+ENV RSTUDIO_VERSION=1.2.5042 \
+ENV RETICULATE_MINICONDA_ENABLED=FALSE
 
 # Install as root
 USER root
@@ -18,7 +21,7 @@ RUN \
     echo 'options(mc.cores = parallel::detectCores() - 1)' >> .Rprofile && \
     echo 'rstan::rstan_options(auto_write = TRUE)' >> .Rprofile && \
     echo 'knitr::opts_knit$set(root.dir = getwd())' >> .Rprofile && \
-    chown -R ${NB_USER} .
+    chown -R ${NB_UID} ${HOME}
 
 # Switch back to default user
 USER ${NB_USER}
