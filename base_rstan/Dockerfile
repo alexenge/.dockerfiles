@@ -19,6 +19,7 @@ RUN /rocker_scripts/install_rstudio.sh \
         brms \
         cowplot \
         emmeans \
+        languageserver \
         lmerTest \
         pbkrtest \
         reticulate \
