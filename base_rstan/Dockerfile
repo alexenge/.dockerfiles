@@ -21,6 +21,7 @@ RUN /rocker_scripts/install_rstudio.sh \
         emmeans \
         languageserver \
         lmerTest \
+        magick \
         pbkrtest \
         reticulate \
         rstan \
