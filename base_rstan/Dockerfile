@@ -12,6 +12,10 @@ RUN /rocker_scripts/install_rstudio.sh \
     # Install system packages
     && apt-get install -y --no-install-recommends \
         clang \
+        clang-9 \
+        libclang-dev \
+        libglpk-dev \
+        libnlopt-dev \
     # Install R packages from CRAN (MRAN, really)
     && install2.r -s --error \
         afex \
@@ -92,12 +96,20 @@ RUN /rocker_scripts/install_rstudio.sh \
         xunicode \
         zapfding \
     # Set some startup options
+    && echo "" > .Rprofile \
+    && echo 'options(mc.cores = parallel::detectCores() - 1)'        >> .Rprofile \
+    && echo 'rstan::rstan_options(auto_write = TRUE)'                >> .Rprofile \
+    && echo 'knitr::opts_knit$set(root.dir = getwd())'               >> .Rprofile \
     && mkdir .R \
-    && echo "CXX14=clang++" >> .R/Makevars \
-    && echo "CXX14FLAGS=-O3 -march=native -mtune=native -fPIC" >> .R/Makevars \
-    && echo 'options(mc.cores = parallel::detectCores() - 1)' >> .Rprofile \
-    && echo 'rstan::rstan_options(auto_write = TRUE)' >> .Rprofile \
-    && echo 'knitr::opts_knit$set(root.dir = getwd())' >> .Rprofile \
+    && echo "" > .R/Makevars \
+    && echo "CXX=clang++-9"                                          >> .R/Makevars \
+    && echo "CXXFLAGS=-Os -mtune=native -march=native"               >> .R/Makevars \
+    && echo "CXXFLAGS+= -Wno-unused-variable -Wno-unused-function"   >> .R/Makevars \
+    && echo "CXXFLAGS+= -Wno-unknown-pragmas -Wno-macro-redefined"   >> .R/Makevars \
+    && echo "CXX14=clang++-9"                                        >> .R/Makevars \
+    && echo "CXX14FLAGS=-Os -mtune=native -march=native"             >> .R/Makevars \
+    && echo "CXX14FLAGS+= -Wno-unused-variable -Wno-unused-function" >> .R/Makevars \
+    && echo "CXX14FLAGS+= -Wno-unknown-pragmas -Wno-macro-redefined" >> .R/Makevars \
     # Add user permissions
     && chown -R ${NB_USER} .
 
