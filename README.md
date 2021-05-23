@@ -1,2 +1,3 @@
-# dockerfiles
-Dockerfiles that serve as the basis for my project-specific containers
+# .dockerfiles
+
+These Dockerfiles serve as the basis for my project-specific containers.
