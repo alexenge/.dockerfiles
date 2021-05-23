@@ -1,8 +1,12 @@
 FROM rocker/binder:4.0.3
 
 # Set environment variables
-ENV RSTUDIO_VERSION=1.2.5042 \
-    RETICULATE_MINICONDA_ENABLED=FALSE
+ENV HOME="/home/${NB_USER}" \
+    RSTUDIO_VERSION="1.2.5042" \
+    RETICULATE_MINICONDA_ENABLED="FALSE"
+
+# Make sure we're in the user's home directory
+WORKDIR ${HOME}
 
 # Switch to root user
 USER root
@@ -27,8 +31,8 @@ RUN echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
         languageserver \
         lmerTest \
         magick \
-        performance \
         pbkrtest \
+        performance \
         reticulate \
         styler \
     # Install R packages from GitHub
@@ -36,8 +40,8 @@ RUN echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
         crsh/papaja@0b4a9a79 \
         stan-dev/cmdstanr@3233585 \
     # Install cmdstan
-    && mkdir -p "/home/rstudio/.cmdstanr" \
-    && Rscript -e "cmdstanr::install_cmdstan(dir = '/home/rstudio/.cmdstanr')" \
+    && mkdir -p "${HOME}/.cmdstanr" \
+    && Rscript -e "cmdstanr::install_cmdstan(dir = '${HOME}/.cmdstanr')" \
     # Install Python packages
     && pip3 install --no-cache-dir \
         notebook \
@@ -101,7 +105,7 @@ RUN echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
     # Add startup options for R
     && echo 'knitr::opts_knit$set(root.dir = getwd())' >> .Rprofile \
     # Provide default user permissions
-    && chown -R ${NB_USER} .
+    && chown -R ${NB_USER} ${HOME}
 
 # Switch back to default user
 USER ${NB_USER}
