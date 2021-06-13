@@ -28,6 +28,7 @@ RUN echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
         dfoptim \
         emmeans \
         furrr \
+        kableExtra \
         languageserver \
         lmerTest \
         magick \
