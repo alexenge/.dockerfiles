@@ -16,7 +16,7 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       -
         name: Extract R version from Dockerfile
-        run: echo "VERSION=$(cat Dockerfile | head -1 | sed 's/.*://')" >> GITHUB_ENV
+        run: echo "VERSION=$(cat Dockerfile | head -1 | sed 's/.*://')" >> $GITHUB_ENV
       -
         name: Docker meta
         id: meta
