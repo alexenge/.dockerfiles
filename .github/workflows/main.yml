@@ -24,8 +24,8 @@ jobs:
         with:
           # use current branch as base name for Docker image tags
           images: |
-            alexenge/${{ github.ref }}
-            ghcr.io/alexenge/${{ github.ref }}
+            alexenge/${{ github.base_ref }}
+            ghcr.io/alexenge/${{ github.base_ref }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=tag
