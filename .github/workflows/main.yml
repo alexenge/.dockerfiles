@@ -9,6 +9,11 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
+      - 
+        name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       -
         name: Docker meta
         id: meta
@@ -16,8 +21,8 @@ jobs:
         with:
           # use current branch as base name for Docker image tags
           images: |
-            alexenge/${{ github.ref }}
-            ghcr.io/alexenge/${{ github.ref }}
+            alexenge/${{ steps.extract_branch.outputs.branch }}
+            ghcr.io/alexenge/${{ steps.extract_branch.outputs.branch }}
           # generate Docker tags for the current version
           tags: |
             type=raw,value=4.0.5
