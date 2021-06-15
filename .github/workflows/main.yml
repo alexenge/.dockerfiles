@@ -1,14 +1,6 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - '**'
-    tags:
-      - 'v*.*.*'
-  pull_request:
-    branches:
-      - 'master'
+on: push
 
 jobs:
   docker:
@@ -17,11 +9,6 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      - 
-        name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       -
         name: Docker meta
         id: meta
@@ -29,12 +16,11 @@ jobs:
         with:
           # use current branch as base name for Docker image tags
           images: |
-            alexenge/${{ steps.extract_branch.outputs.branch }}
-            ghcr.io/alexenge/${{ steps.extract_branch.outputs.branch }}
-          # generate Docker tags based on the following events/attributes
+            alexenge/${{ github.ref }}
+            ghcr.io/alexenge/${{ github.ref }}
+          # generate Docker tags for the current version
           tags: |
-            type=ref,event=tag
-            type=ref,event=pr
+            type=raw,value=4.0.5
             type=raw,value=latest
       -
         name: Set up QEMU
@@ -44,14 +30,13 @@ jobs:
         uses: docker/setup-buildx-action@v1
       -
         name: Login to DockerHub
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v1 
         with:
+          # these need to be stored under "Settings" > "Secrets" in the repo
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Login to GHCR
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
