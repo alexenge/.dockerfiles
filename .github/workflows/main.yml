@@ -10,11 +10,6 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Extract branch name
-        id: extract_branch
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      -
         name: Extract R version from Dockerfile
         run: echo "VERSION=$(cat Dockerfile | head -1 | sed 's/.*://')" >> $GITHUB_ENV
       -
@@ -24,8 +19,8 @@ jobs:
         with:
           # use current branch as base name for the Docker images
           images: |
-            alexenge/${{ steps.extract_branch.outputs.branch }}
-            ghcr.io/alexenge/${{ steps.extract_branch.outputs.branch }}
+            alexenge/${{ github.ref }}
+            ghcr.io/alexenge/${{ github.ref }}
           # generate Docker tags for the current version
           tags: |
             type=raw,value=${{ env.VERSION }}
