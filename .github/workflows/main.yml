@@ -30,10 +30,7 @@ jobs:
           tags: |
             type=ref,event=tag
             type=ref,event=pr
-            type=semver,pattern={{version}}
-          # always publish under the 'latest' tag
-          flavor: |
-            latest=true
+            type=raw,value=latest
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
