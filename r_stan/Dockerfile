@@ -9,6 +9,7 @@ RUN apt-get update \
     && mkdir -p "${HOME}"/.cmdstanr \
     && Rscript -e "cmdstanr::install_cmdstan(dir = '${HOME}/.cmdstanr')" \
     && echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
+    && echo "options(brms.backend = 'cmdstanr')" >> .Rprofile \
     && install2.r --error --skipinstalled \
         bayestestR \
         brms \
