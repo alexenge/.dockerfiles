@@ -1,3 +1,26 @@
-# .dockerfiles
+# docker_images
 
-These Dockerfiles serve as the basis for my project-specific containers.
+![GitHub](https://img.shields.io/github/license/alexenge/docker_images)
+
+Docker images that serve as the basis for my project-specific containers
+## R-based images
+
+| Image | Included packages | Status | Demo |
+|-|-|:-:|:-:|
+| [**`r_basics`**](https://github.com/alexenge/docker_images/tree/r_basics) | <ul><li>R + RStudio</li><li>R packages for mixed-effects modeling</li><li>Python (via Jupyter Notebook or R-reticulate)</li></ul> | ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/alexenge/docker_images/autobuild/r_basics)<br>![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/alexenge/r_basics) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alexenge/docker_images/r_basics?urlpath=rstudio) |
+| [**`r_papaja`**](https://github.com/alexenge/docker_images/tree/r_papaja) | <ul><li>Everything in `r_basics`</li><li>R-papaja for APA-style manuscripts in R Markdown</li></ul> | ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/alexenge/docker_images/autobuild/r_papaja)<br>![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/alexenge/r_papaja) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alexenge/docker_images/r_papaja?urlpath=rstudio) |
+| [**`r_stan`**](https://github.com/alexenge/docker_images/tree/r_stan) | <ul><li>Everything in `r_papaja`</li><li>The Stan language for probabilistic programming</li><li>Related R packages for Bayesian modeling</li></ul> | ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/alexenge/docker_images/autobuild/r_stan)<br>![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/alexenge/r_stan) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alexenge/docker_images/r_stan?urlpath=rstudio) |
+
+## Usage
+
+After installing [Docker Desktop](https://www.docker.com/products/docker-desktop), the images can be pulled and run from [Docker Hub](https://hub.docker.com/u/alexenge):
+
+```bash
+docker run --rm -p 8888:8888 alexenge/r_stan:latest
+```
+
+Or from the [GitHub container registry](https://github.com/alexenge?ecosystem=container&tab=packages):
+
+```bash
+docker run --rm -p 8888:8888 ghcr.io/alexenge/r_stan:latest
+```
