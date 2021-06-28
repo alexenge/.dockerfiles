@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/alexenge/docker_images)
 
-Docker images as the basis for project-specific containers. Images are ready to be used with the [Binder](https://mybinder.readthedocs.io/en/latest/introduction.html) cloud service.
+Docker images as the basis for project-specific containers, ready to be used with the [Binder](https://mybinder.readthedocs.io/en/latest/introduction.html) cloud service
 
 ## R-based images
 
