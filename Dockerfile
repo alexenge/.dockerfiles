@@ -16,6 +16,7 @@ RUN /rocker_scripts/install_rstudio.sh \
     dfoptim \
     emmeans \
     furrr \
+    here \
     kableExtra \
     languageserver \
     lmerTest \
