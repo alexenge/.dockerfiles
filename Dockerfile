@@ -11,8 +11,8 @@ RUN apt-get update \
     && echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
     && echo "options(brms.backend = 'cmdstanr')" >> .Rprofile \
     && install2.r --error --skipinstalled \
-        bayestestR \
-        brms \
+    bayestestR \
+    brms \
     && chown -R "${NB_USER}" "${HOME}"
 
 USER "${NB_USER}"
