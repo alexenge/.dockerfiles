@@ -25,6 +25,7 @@ RUN /rocker_scripts/install_rstudio.sh \
     performance \
     reticulate \
     styler \
+    tictoc \
     && pip3 install --no-cache-dir \
     notebook \
     && chown -R "${NB_USER}" "${HOME}"
