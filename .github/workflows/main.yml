@@ -21,7 +21,6 @@ jobs:
           # use current branch as base name for the Docker images
           images: |
             alexenge/${{ env.BRANCH }}
-            ghcr.io/alexenge/${{ env.BRANCH }}
           # generate Docker tags for the current version
           tags: |
             type=raw,value=${{ env.VERSION }}
@@ -36,12 +35,6 @@ jobs:
           # these need to be stored under "Settings" > "Secrets" in the repo
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Login to GHCR
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
