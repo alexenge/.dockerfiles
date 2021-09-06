@@ -29,7 +29,7 @@ RUN /rocker_scripts/install_rstudio.sh \
     && pip3 install --no-cache-dir \
     notebook \
     radian \
-    && echo "options(radian.color_scheme = 'borland')" > "${HOME}"/.radian_profile \
+    && echo "options(radian.color_scheme = 'vs')" > "${HOME}"/.radian_profile \
     && chown -R "${NB_USER}" "${HOME}"
 
 USER "${NB_USER}"
