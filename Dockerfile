@@ -23,6 +23,7 @@ RUN /rocker_scripts/install_rstudio.sh \
     magick \
     pbkrtest \
     performance \
+    renv \
     reticulate \
     styler \
     tictoc \
