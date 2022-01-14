@@ -17,5 +17,5 @@ Docker images as the basis for project-specific containers, ready to be used wit
 After installing [Docker Desktop](https://www.docker.com/products/docker-desktop), the images can be pulled and run from [Docker Hub](https://hub.docker.com/u/alexenge):
 
 ```bash
-docker run --rm -p 8888:8888 alexenge/r_basics:latest
+docker run --rm -p 8888:8888 alexenge/r_eeg:latest
 ```
