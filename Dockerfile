@@ -1,18 +1,23 @@
-FROM alexenge/r_papaja:4.0.5
+FROM alexenge/r_basics:4.1.2
 
 USER root
 
-RUN apt-get update \
+RUN \
+    # Install system packages
+    apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends clang \
-    && installGithub.r stan-dev/cmdstanr@3233585 \
+    # Install cmdstandr from GitHub
+    && installGithub.r stan-dev/cmdstanr@a2a97d9 \
     && mkdir -p "${HOME}"/.cmdstanr \
     && Rscript -e "cmdstanr::install_cmdstan(dir = '${HOME}/.cmdstanr')" \
     && echo "options(mc.cores = parallel::detectCores())" >> .Rprofile \
     && echo "options(brms.backend = 'cmdstanr')" >> .Rprofile \
+    # Install R packages
     && install2.r --error --skipinstalled \
     bayestestR \
     brms \
+    # Add default user permissions
     && chown -R "${NB_USER}" "${HOME}"
 
 USER "${NB_USER}"
