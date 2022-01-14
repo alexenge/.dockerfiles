@@ -1,1 +1,1 @@
-FROM alexenge/r_basics:4.1.2
+FROM alexenge/r_basics:latest
