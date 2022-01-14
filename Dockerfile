@@ -1,15 +1,13 @@
-FROM rocker/binder:4.0.5
+FROM rocker/binder:4.1.2
 
 ENV HOME=/home/"${NB_USER}" \
-    RSTUDIO_VERSION=1.2.5042 \
     RETICULATE_MINICONDA_ENABLED=FALSE
 
 WORKDIR "${HOME}"
 
 USER root
 
-RUN /rocker_scripts/install_rstudio.sh \
-    && install2.r --error --skipinstalled \
+RUN install2.r --error --skipinstalled \
     afex \
     buildmer \
     cowplot \
