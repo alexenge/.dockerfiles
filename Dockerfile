@@ -34,6 +34,7 @@ RUN \
     && pip3 install --no-cache-dir \
     notebook \
     radian \
+    session_info \
     # Install LaTeX packages
     && tlmgr update --self \
     && tlmgr install \
