@@ -5,7 +5,6 @@ USER root
 RUN \
     # Install system packages
     apt-get update \
-    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends clang \
     # Install cmdstandr from GitHub
     && installGithub.r stan-dev/cmdstanr@a2a97d9 \
