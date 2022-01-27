@@ -1,8 +1,8 @@
 FROM rocker/binder:4.1.2
 
 ENV HOME="/home/$NB_USER"
-ENV RETICULATE_MINICONDA_ENABLED="FALSE"
 ENV PROJDIR="$HOME/proj"
+ENV RETICULATE_MINICONDA_ENABLED="FALSE"
 
 USER root
 
@@ -99,7 +99,7 @@ RUN \
     xunicode \
     zapfding \
     # Set some package options
-    && echo 'knitr::opts_knit$set(root.dir = getwd())' >> "$HOME/.Rprofile" \
+    && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$HOME/.Rprofile" \
     && echo "options(radian.color_scheme = 'vs')" > "$HOME/.radian_profile" \
     # Create working directory
     && mkdir "$PROJDIR" \
