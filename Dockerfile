@@ -8,8 +8,9 @@ RUN \
     craddm/eegUtils@v0.6.3 \
     # Install Python packages
     && pip3 install --no-cache-dir \
+    h5py==3.6.0 \
     mne==0.24.1 \
-    hu-neuro-pipeline==0.2.4 \
+    hu-neuro-pipeline==0.2.6 \
     # Add default user permissions
     && chown -R "$NB_USER" "$HOME"
 
