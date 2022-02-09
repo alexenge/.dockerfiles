@@ -10,16 +10,20 @@ RUN \
     # Install R packages from MRAN
     install2.r --error --skipinstalled \
     afex \
+    broom.mixed \
     buildmer \
     cowplot \
     dfoptim \
     emmeans \
     furrr \
     here \
+    Hmisc \
     kableExtra \
     languageserver \
     lmerTest \
     magick \
+    modelsummary \
+    patchwork \
     pbkrtest \
     performance \
     renv \
