@@ -5,7 +5,7 @@ USER root
 RUN \
     # Install R packages from GitHub
     installGithub.r \
-    craddm/eegUtils@v0.6.3 \
+    craddm/eegUtils@v0.7.0 \
     # Install Python packages
     && pip3 install --no-cache-dir \
     h5py==3.6.0 \
