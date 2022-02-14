@@ -90,6 +90,7 @@ RUN \
     rerunfilecheck \
     scalerel \
     setspace \
+    siunitx \
     stringenc \
     times \
     threeparttable \
