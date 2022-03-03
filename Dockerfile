@@ -18,6 +18,7 @@ RUN \
     furrr \
     here \
     Hmisc \
+    huxtable \
     kableExtra \
     languageserver \
     lmerTest \
