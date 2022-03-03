@@ -104,8 +104,9 @@ RUN \
     xcolor \
     xunicode \
     zapfding \
-    # Set some package options
+    # Make sure R Markdown documents get knitted from the project directory
     && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$HOME/.Rprofile" \
+    # Set color theme for radian
     && echo "options(radian.color_scheme = 'vs')" > "$HOME/.radian_profile" \
     # Create working directory
     && mkdir "$PROJDIR" \
