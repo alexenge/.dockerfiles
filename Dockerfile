@@ -3,8 +3,11 @@ FROM alexenge/r_basics:4.1.2
 USER root
 
 RUN \
+    # Install R packages from MRAN
+    install2.r --error --skipinstalled \
+    arrow \
     # Install R packages from GitHub
-    installGithub.r \
+    && installGithub.r \
     craddm/eegUtils@v0.7.0 \
     # Install Python packages
     && pip3 install --no-cache-dir \
