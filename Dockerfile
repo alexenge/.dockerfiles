@@ -39,6 +39,7 @@ RUN \
     # Install Python packages
     && pip3 install --no-cache-dir \
     notebook \
+    osfclient \
     radian \
     session_info \
     # Install LaTeX packages
