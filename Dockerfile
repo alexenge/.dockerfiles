@@ -102,6 +102,7 @@ RUN \
     uniquecounter \
     was \
     xcolor \
+    xpatch \
     xunicode \
     zapfding \
     # Make sure R Markdown documents get knitted from the project directory
