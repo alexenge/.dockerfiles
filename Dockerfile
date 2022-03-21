@@ -29,6 +29,7 @@ RUN \
     performance \
     renv \
     reticulate \
+    Rmisc \
     styler \
     tictoc \
     # Install R packages from GitHub
@@ -43,10 +44,12 @@ RUN \
     # Install LaTeX packages
     && tlmgr update --self \
     && tlmgr install \
+    amscls \
     amsmath \
     apa7 \
     auxhook \
     babel-english \
+    beamer \
     bigintcalc \
     bitset \
     booktabs \
@@ -58,11 +61,13 @@ RUN \
     etoolbox \
     euenc \
     fancyhdr \
+    fancyvrb \
     filehook \
     float \
     fontspec \
     footmisc \
     fp \
+    framed \
     geometry environ \
     gettitlestring \
     grffile \
@@ -97,6 +102,7 @@ RUN \
     threeparttable \
     threeparttablex \
     tipa \
+    translator \
     trimspaces \
     unicode-math \
     uniquecounter \
