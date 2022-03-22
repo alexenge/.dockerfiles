@@ -24,6 +24,7 @@ RUN \
     languageserver \
     lmerTest \
     magick \
+    MetBrewer \
     modelsummary \
     pbkrtest \
     performance \
