@@ -16,6 +16,7 @@ RUN \
     dfoptim \
     emmeans \
     furrr \
+    git2r \
     here \
     Hmisc \
     httpgd \
