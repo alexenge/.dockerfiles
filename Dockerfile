@@ -27,6 +27,7 @@ RUN \
     magick \
     MetBrewer \
     modelsummary \
+    naturalsort \
     pbkrtest \
     performance \
     renv \
