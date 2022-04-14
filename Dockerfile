@@ -2,13 +2,19 @@ FROM rocker/binder:4.1.2
 
 ENV HOME="/home/$NB_USER"
 ENV PROJDIR="$HOME/proj"
+ENV RPROFILE="$HOME/.Rprofile"
+ENV RADIAN_PROFILE="$HOME/.radian_profile"
+ENV RSTUDIO_PREFS="$HOME/.config/rstudio/rstudio-prefs.json"
 ENV RETICULATE_MINICONDA_ENABLED="FALSE"
 
 USER root
 
 RUN \
+    # Install system packages
+    apt-get update \
+    && apt-get install -y --no-install-recommends jq \
     # Install R packages from MRAN
-    install2.r --error --skipinstalled \
+    && install2.r --error --skipinstalled \
     afex \
     broom.mixed \
     buildmer \
@@ -114,14 +120,15 @@ RUN \
     xpatch \
     xunicode \
     zapfding \
-    # Use the project directory as the default R working directory
-    && echo "setwd(\"$PROJDIR\")" >> "$HOME/.Rprofile" \
+    # Use the project directory as the default R + RStudio working directory
+    && echo "setwd(\"$PROJDIR\")" >> "$RPROFILE" \
+    && jq ".initial_working_directory=\"$PROJDIR\"" "$RSTUDIO_PREFS" \
     # Make sure R Markdown documents get knitted from the project directory
-    && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$HOME/.Rprofile" \
+    && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$RPROFILE" \
     # Enable plotting via `httpgd` in VS Code
-    && echo "options(vsc.use_httpgd = TRUE)" >> "$HOME/.Rprofile" \
+    && echo "options(vsc.use_httpgd = TRUE)" >> "$RPROFILE" \
     # Set color theme for radian
-    && echo "options(radian.color_scheme = \"vs\")" > "$HOME/.radian_profile" \
+    && echo "options(radian.color_scheme = \"vs\")" >> "RADIAN_PROFILE" \
     # Create working directory
     && mkdir "$PROJDIR" \
     # Add default user permissions
