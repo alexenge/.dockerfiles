@@ -122,6 +122,7 @@ RUN \
     zapfding \
     # Use the project directory as the default R + RStudio working directory
     && echo "setwd(\"$PROJDIR\")" >> "$RPROFILE" \
+    && mkdir -p "${RSTUDIO_PREFS%/*}" && touch "$RSTUDIO_PREFS" \
     && jq ".initial_working_directory=\"$PROJDIR\"" "$RSTUDIO_PREFS" \
     # Make sure R Markdown documents get knitted from the project directory
     && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$RPROFILE" \
