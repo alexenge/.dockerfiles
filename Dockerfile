@@ -114,12 +114,14 @@ RUN \
     xpatch \
     xunicode \
     zapfding \
+    # Use the project directory as the default R working directory
+    && echo "setwd(\"$PROJDIR\")" >> "$HOME/.Rprofile" \
     # Make sure R Markdown documents get knitted from the project directory
     && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$HOME/.Rprofile" \
     # Enable plotting via `httpgd` in VS Code
     && echo "options(vsc.use_httpgd = TRUE)" >> "$HOME/.Rprofile" \
     # Set color theme for radian
-    && echo "options(radian.color_scheme = 'vs')" > "$HOME/.radian_profile" \
+    && echo "options(radian.color_scheme = \"vs\")" > "$HOME/.radian_profile" \
     # Create working directory
     && mkdir "$PROJDIR" \
     # Add default user permissions
