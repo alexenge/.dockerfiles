@@ -15,6 +15,6 @@ RUN \
     mne==1.0.0 \
     hu-neuro-pipeline==0.4.4 \
     # Add default user permissions
-    && chown -R "$NB_USER" "$HOME"
+    && chown -R $NB_USER $HOME
 
-USER "$NB_USER"
+USER $NB_USER
