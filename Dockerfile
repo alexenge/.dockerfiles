@@ -2,7 +2,7 @@ FROM rocker/binder:4.1.2
 
 ENV NB_USER=rstudio 
 ENV HOME=/home/$NB_USER
-ENV PROJDIR=$HOME/proj
+ENV PROJECT_DIR=$HOME/project
 ENV RETICULATE_MINICONDA_ENABLED=FALSE
 
 COPY rstudio_prefs.json $HOME/.config/rstudio/rstudio-prefs.json
@@ -13,7 +13,7 @@ USER root
 
 RUN \
     # Create project directory
-    mkdir $PROJDIR \
+    mkdir $PROJECT_DIR \
     # Install R packages from MRAN
     && install2.r --error --skipinstalled \
     afex \
@@ -126,4 +126,4 @@ RUN \
 
 USER $NB_USER
 
-WORKDIR $PROJDIR
+WORKDIR $PROJECT_DIR
