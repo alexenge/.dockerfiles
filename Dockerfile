@@ -1,19 +1,19 @@
 FROM rocker/binder:4.1.2
 
-ENV HOME="/home/$NB_USER"
-ENV PROJDIR="$HOME/proj"
-ENV RPROFILE="$HOME/.Rprofile"
-ENV RADIAN_PROFILE="$HOME/.radian_profile"
-ENV RETICULATE_MINICONDA_ENABLED="FALSE"
+ENV NB_USER=rstudio 
+ENV HOME=/home/$NB_USER
+ENV PROJDIR=$HOME/proj
+ENV RETICULATE_MINICONDA_ENABLED=FALSE
 
-COPY rstudio_prefs.json "$HOME"/.config/rstudio/rstudio-prefs.json
+COPY rstudio_prefs.json $HOME/.config/rstudio/rstudio-prefs.json
+COPY .Rprofile $HOME/.Rprofile
+COPY .radian_profile $HOME/.radian_profile
 
 USER root
 
 RUN \
-    # Install system packages
-    apt-get update \
-    && apt-get install -y --no-install-recommends jq \
+    # Create project directory
+    mkdir $PROJDIR \
     # Install R packages from MRAN
     && install2.r --error --skipinstalled \
     afex \
@@ -121,21 +121,9 @@ RUN \
     xpatch \
     xunicode \
     zapfding \
-    # Use the project directory as the default R + RStudio working directory
-    && echo "setwd(\"$PROJDIR\")" >> "$RPROFILE" \
-    && mkdir -p "${RSTUDIO_PREFS%/*}" && touch "$RSTUDIO_PREFS" \
-    && jq ".initial_working_directory=\"$PROJDIR\"" "$RSTUDIO_PREFS" \
-    # Make sure R Markdown documents get knitted from the project directory
-    && echo "knitr::opts_knit\$set(root.dir = getwd())" >> "$RPROFILE" \
-    # Enable plotting via `httpgd` in VS Code
-    && echo "options(vsc.use_httpgd = TRUE)" >> "$RPROFILE" \
-    # Set color theme for radian
-    && echo "options(radian.color_scheme = \"vs\")" >> "$RADIAN_PROFILE" \
-    # Create working directory
-    && mkdir "$PROJDIR" \
     # Add default user permissions
-    && chown -R "$NB_USER" "$HOME"
+    && chown -R $NB_USER $HOME
 
-USER "$NB_USER"
+USER $NB_USER
 
-WORKDIR "$PROJDIR"
+WORKDIR $PROJDIR
