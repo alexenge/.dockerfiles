@@ -46,6 +46,9 @@ RUN \
     && installGithub.r \
     crsh/citr@0e8243d \
     crsh/papaja@f1bbad9 \
+    # Install pyenv
+    && curl https://pyenv.run | bash \
+    && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> $HOME/.bashrc \
     # Install Python packages
     && pip3 install --no-cache-dir \
     notebook \
