@@ -4,8 +4,9 @@ ENV HOME="/home/$NB_USER"
 ENV PROJDIR="$HOME/proj"
 ENV RPROFILE="$HOME/.Rprofile"
 ENV RADIAN_PROFILE="$HOME/.radian_profile"
-ENV RSTUDIO_PREFS="$HOME/.config/rstudio/rstudio-prefs.json"
 ENV RETICULATE_MINICONDA_ENABLED="FALSE"
+
+COPY rstudio_prefs.json "$HOME"/.config/rstudio/rstudio-prefs.json
 
 USER root
 
@@ -129,7 +130,7 @@ RUN \
     # Enable plotting via `httpgd` in VS Code
     && echo "options(vsc.use_httpgd = TRUE)" >> "$RPROFILE" \
     # Set color theme for radian
-    && echo "options(radian.color_scheme = \"vs\")" >> "RADIAN_PROFILE" \
+    && echo "options(radian.color_scheme = \"vs\")" >> "$RADIAN_PROFILE" \
     # Create working directory
     && mkdir "$PROJDIR" \
     # Add default user permissions
