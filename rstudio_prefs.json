@@ -1,7 +1,7 @@
 {
     "always_save_history": false,
-    "initial_working_directory": "/home/rstudio/proj",
-    "knit_working_dir": "/home/rstudio/proj",
+    "initial_working_directory": "/home/rstudio/project",
+    "knit_working_dir": "/home/rstudio/project",
     "reuse_sessions_for_project_links": true,
     "save_workspace": "never"
 }
