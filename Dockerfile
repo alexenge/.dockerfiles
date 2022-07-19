@@ -14,7 +14,7 @@ RUN \
     h5io==0.1.7 \
     h5py==3.6.0 \
     mne==1.0.0 \
-    hu-neuro-pipeline==0.4.6 \
+    hu-neuro-pipeline==0.5.0 \
     # Add default user permissions
     && chown -R $NB_USER $HOME
 
