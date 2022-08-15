@@ -45,7 +45,7 @@ RUN \
     # Install R packages from GitHub
     && installGithub.r \
     crsh/citr@0e8243d \
-    crsh/papaja@f1bbad9 \
+    crsh/papaja@6f64628 \
     # Install Python packages
     && pip3 install --no-cache-dir \
     notebook \
