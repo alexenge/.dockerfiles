@@ -56,6 +56,7 @@ RUN \
     && tlmgr install \
     amscls \
     amsmath \
+    apa6 \
     apa7 \
     auxhook \
     babel-english \
@@ -98,6 +99,7 @@ RUN \
     makecmds \
     multirow \
     nowidow \
+    orcidlink \
     pdfescape \
     pdftexcmds \
     pgf \
