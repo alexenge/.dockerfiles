@@ -54,6 +54,7 @@ RUN \
     # Install LaTeX packages
     && tlmgr update --self \
     && tlmgr install \
+    adjustbox \
     amscls \
     amsmath \
     apa6 \
@@ -65,6 +66,7 @@ RUN \
     bitset \
     booktabs \
     caption \
+    collectbox \
     csquotes \
     endfloat \
     epstopdf-pkg \
