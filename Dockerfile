@@ -112,6 +112,7 @@ RUN \
     setspace \
     siunitx \
     stringenc \
+    tcolorbox \
     times \
     threeparttable \
     threeparttablex \
