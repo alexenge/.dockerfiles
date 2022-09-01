@@ -7,7 +7,7 @@ RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends clang \
     # Install cmdstandr from GitHub
-    && installGithub.r stan-dev/cmdstanr@a2a97d9 \
+    && installGithub.r stan-dev/cmdstanr@v0.5.3 \
     && mkdir -p $HOME/.cmdstanr \
     && Rscript -e "cmdstanr::install_cmdstan(dir = '$HOME/.cmdstanr')" \
     && echo "options(mc.cores = parallel::detectCores())" >> $HOME/.Rprofile \
