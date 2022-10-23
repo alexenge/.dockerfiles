@@ -40,6 +40,7 @@ RUN \
     renv \
     reticulate \
     Rmisc \
+    scico \
     styler \
     tictoc \
     # Install R packages from GitHub
