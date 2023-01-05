@@ -8,7 +8,7 @@ RUN \
     arrow \
     # Install R packages from GitHub
     && installGithub.r \
-    craddm/eegUtils@v0.7.0 \
+    alexenge/eegUtils \
     alexenge/erpcore \
     # Install Python packages
     && pip3 install --no-cache-dir \
