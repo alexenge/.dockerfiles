@@ -14,7 +14,7 @@ RUN \
     && pip3 install --no-cache-dir \
     h5io==0.1.7 \
     h5py==3.6.0 \
-    mne==1.1.0 \
+    mne==1.3.0 \
     hu-neuro-pipeline==0.6.3 \
     # Add default user permissions
     && chown -R $NB_USER $HOME
