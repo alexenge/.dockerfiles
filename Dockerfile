@@ -69,6 +69,7 @@ RUN \
     caption \
     collectbox \
     csquotes \
+    ec \
     endfloat \
     epstopdf-pkg \
     etexcmds \
