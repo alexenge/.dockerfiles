@@ -23,6 +23,7 @@ RUN \
     dfoptim \
     emmeans \
     furrr \
+    ggnewscale \
     git2r \
     here \
     Hmisc \
@@ -33,6 +34,7 @@ RUN \
     lmerTest \
     magick \
     MetBrewer \
+    MKinfer \
     modelsummary \
     naturalsort \
     pbkrtest \
@@ -49,7 +51,8 @@ RUN \
     crsh/papaja@6f64628 \
     # Install Python packages
     && pip3 install --no-cache-dir \
-    notebook \
+    ipykernel \
+    pyprojroot \
     radian \
     session_info \
     # Install LaTeX packages
