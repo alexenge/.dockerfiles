@@ -17,6 +17,7 @@ RUN \
     # Install R packages from MRAN
     && install2.r --error --skipinstalled \
     afex \
+    binom \
     broom.mixed \
     buildmer \
     cowplot \
