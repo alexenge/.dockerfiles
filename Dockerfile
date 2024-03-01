@@ -49,7 +49,7 @@ RUN \
     tictoc \
     # Install R packages from GitHub
     && installGithub.r \
-    crsh/citr@0e8243d \
+    crsh/citr \
     # Install Python packages
     && pip3 install --no-cache-dir \
     ipykernel \
