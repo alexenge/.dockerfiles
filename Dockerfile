@@ -28,7 +28,6 @@ RUN \
     git2r \
     here \
     Hmisc \
-    httpgd \
     huxtable \
     kableExtra \
     languageserver \
@@ -50,6 +49,7 @@ RUN \
     # Install R packages from GitHub
     && installGithub.r \
     crsh/citr \
+    nx10/httpgd \
     # Install Python packages
     && pip3 install --no-cache-dir \
     ipykernel \
