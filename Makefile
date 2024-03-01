@@ -1,6 +1,6 @@
 IMAGE_USER := alexenge
 IMAGE_NAME := r_basics
-IMAGE_TAG := 4.3.1
+IMAGE_TAG := 4.3.3
 IMAGE := $(IMAGE_USER)/$(IMAGE_NAME):$(IMAGE_TAG)
 PROJECT_DIR := $(CURDIR)
 
