@@ -1,4 +1,4 @@
-FROM alexenge/r_basics:4.3.3
+FROM alexenge/r_basics:4.4.1
 
 USER root
 
