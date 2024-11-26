@@ -1,4 +1,4 @@
-FROM rocker/binder:4.3.3
+FROM rocker/binder:4.4.1
 
 ENV NB_USER=rstudio 
 ENV HOME=/home/$NB_USER
