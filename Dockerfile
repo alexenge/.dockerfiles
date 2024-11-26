@@ -1,4 +1,4 @@
-FROM alexenge/r_eeg:4.3.1
+FROM alexenge/r_eeg:4.4.1
 
 USER root
 
