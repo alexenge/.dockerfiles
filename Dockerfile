@@ -45,6 +45,8 @@ RUN \
     Rmisc \
     scico \
     styler \
+    tarchetypes \
+    targets \
     tictoc \
     # Install R packages from GitHub
     && installGithub.r \
