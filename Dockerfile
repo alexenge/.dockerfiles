@@ -12,10 +12,10 @@ RUN \
     alexenge/erpcore \
     # Install Python packages
     && pip3 install --no-cache-dir \
-    h5io==0.1.9 \
-    h5py==3.9.0 \
-    mne==1.6 \
-    hu-neuro-pipeline==0.8.3 \
+    h5io \
+    h5py \
+    mne==1.8.0 \
+    hu-neuro-pipeline==0.9.0 \
     # Add default user permissions
     && chown -R $NB_USER $HOME
 
